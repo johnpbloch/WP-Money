@@ -5,6 +5,12 @@
  * Description: Track money with WordPress
  * Version: 0.1-alpha
  */
+if( version_compare( PHP_VERSION, '5.3', '<' ) ) {
+	deactivate_plugins( __FILE__, true );
+	trigger_error( 'WP Money requires at least PHP 5.3. You are using ' . PHP_VERSION );
+	return;
+}
+
 define( 'WP_MONEY_DIR', dirname( __FILE__ ) . '/' );
 define( 'WP_MONEY_LIB', WP_MONEY_DIR . 'lib/' );
 define( 'WP_MONEY_VAR', WP_MONEY_DIR . 'var/' );
